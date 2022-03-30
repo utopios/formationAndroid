@@ -1,4 +1,4 @@
 Exercice 1
 -On souhaite créer une application des todos lists (avec deux vues).
-Une vue avec un formulaire pour ajouter une task (content, priorité)
+Une vue avec un formulaire pour ajouter une task (contenu, priorité)
 Une vue pour afficher les tasks.
