@@ -18,13 +18,13 @@ import formation.java.formationanroid.dao.PersonDao;
 import formation.java.formationanroid.entity.Person;
 
 @Database(entities = {Person.class}, version = 1)
-abstract class ContextDataBase extends RoomDatabase {
+public abstract class ContextDataBase extends RoomDatabase {
 
-    abstract PersonDao personDao();
+    public abstract PersonDao personDao();
     private static ContextDataBase instance = null;
 
     //On crée un pool de 3 threads pour executer nos actions dans des threads autre le principal
-    private static ExecutorService databaseExecutor = Executors.newFixedThreadPool(3);
+    public static ExecutorService databaseExecutor = Executors.newFixedThreadPool(3);
 
     public static ContextDataBase getInstance(Context context) {
         if(instance == null) {
