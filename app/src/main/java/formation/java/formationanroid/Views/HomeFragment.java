@@ -93,9 +93,16 @@ public class HomeFragment extends Fragment {
             //La méthode static findNavController, récupère le navHost de la view
             //La méthode navigate, qui permet de naviguer vers une action (Id de l'action du fragment)
 
+            //L'envoie de données vers la destination avec le bundle
             //La récupération de la valeur du edittext et son ajout dans notre bundle
-            argsBundle.putString("personeName", editTextName.getText().toString());
-            Navigation.findNavController(v).navigate(R.id.homeToSecond, argsBundle);
+            //argsBundle.putString("personeName", editTextName.getText().toString());
+            //Navigation.findNavController(v).navigate(R.id.homeToSecond, argsBundle);
+
+
+            //L'envoie des données avec le plugin safeargs
+            //Le plugin safeargs genere une classe HomeFragmentDirections, une classe par action, et une méthode statique par action pour créer les actions
+            HomeFragmentDirections.HomeToSecond action = HomeFragmentDirections.homeToSecond(editTextName.getText().toString());
+            Navigation.findNavController(v).navigate(action);
         });
         //On peut également utiliser les méthodes de création d'interfaces fonctionnelles de la classe Navigation
         //button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.homeToSecond));
