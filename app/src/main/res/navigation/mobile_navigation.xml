@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/formToDoFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -22,5 +22,26 @@
         <argument
             android:name="personName"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/formToDoFragment"
+        android:name="formation.java.formationanroid.FormToDoFragment"
+        android:label="fragment_form_to_do"
+        tools:layout="@layout/fragment_form_to_do" >
+        <action
+            android:id="@+id/formTodoToListTodo"
+            app:destination="@id/listToDoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listToDoFragment"
+        android:name="formation.java.formationanroid.ListToDoFragment"
+        android:label="fragment_list_to_do"
+        tools:layout="@layout/fragment_list_to_do" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="priority"
+            app:argType="integer" />
     </fragment>
 </navigation>
