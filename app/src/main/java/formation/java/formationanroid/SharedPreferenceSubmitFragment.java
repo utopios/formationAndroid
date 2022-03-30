@@ -13,6 +13,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 
 public class SharedPreferenceSubmitFragment extends Fragment {
 
@@ -57,5 +64,35 @@ public class SharedPreferenceSubmitFragment extends Fragment {
         view.findViewById(R.id.buttonSavePr).setOnClickListener((v) -> {
             Navigation.findNavController(v).navigate(R.id.action_sharedPreferenceSubmitFragment_to_sharedPreferenceReadFragment);
         });
+
+        //Exemple de création de fichier interne
+        String data = "Dato to save in file";
+
+        //Le ficher sera sauvegardé dans le dossier Android/data/<nom_complet_application>/files/file1.txt
+        String fileName = "file1.txt";
+        try {
+            FileOutputStream stream = getContext().openFileOutput(fileName, 0);
+            stream.write(data.getBytes());
+            stream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Exemple de lecture à partir d'un fichier.
+        try {
+            FileInputStream inputStream = getContext().openFileInput(fileName);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            StringBuilder sb = new StringBuilder();
+            String l = null;
+            while ((l = reader.readLine())!= null) {
+                sb.append(l).append("\n");
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
