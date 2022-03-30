@@ -1,4 +1,4 @@
-package formation.java.formationanroid.Views;
+package formation.java.formationanroid.views;
 
 import android.os.Bundle;
 
