@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
+import android.widget.EditText;
 
 
 import formation.java.formationanroid.R;
@@ -32,6 +32,7 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private Button button;
+    private EditText editTextName;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -76,13 +77,27 @@ public class HomeFragment extends Fragment {
         Button button = getView().findViewById(R.id.button);
     }*/
 
-
+    //Surcharge de la méthode fin de création de view
     @Override
     public void onViewCreated(@NonNull View view, @Nullable  Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //Récupération de notre bouton par son id
         button = view.findViewById(R.id.button);
+        editTextName = view.findViewById(R.id.editTextTextPersonName);
+        //La création d'un objet bundle pour ajouter les paramètres de la déstination (les paramètres de la déstination sont les données à envoyer vers la destination)
+        Bundle argsBundle = new Bundle();
+
+        //Ajouter une fonction callback sur l'event click
         button.setOnClickListener((v) -> {
-            Navigation.findNavController(v).navigate(R.id.homeToSecond);
+            //Pour naviguer vers une nouvelle frame, on utilise la classe Navigation
+            //La méthode static findNavController, récupère le navHost de la view
+            //La méthode navigate, qui permet de naviguer vers une action (Id de l'action du fragment)
+
+            //La récupération de la valeur du edittext et son ajout dans notre bundle
+            argsBundle.putString("personeName", editTextName.getText().toString());
+            Navigation.findNavController(v).navigate(R.id.homeToSecond, argsBundle);
         });
+        //On peut également utiliser les méthodes de création d'interfaces fonctionnelles de la classe Navigation
+        //button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.homeToSecond));
     }
 }
