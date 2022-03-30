@@ -1,19 +1,23 @@
 package formation.java.formationanroid;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -66,22 +70,22 @@ public class SharedPreferenceSubmitFragment extends Fragment {
         });
 
         //Exemple de création de fichier interne
-        String data = "Dato to save in file";
-
-        //Le ficher sera sauvegardé dans le dossier Android/data/<nom_complet_application>/files/file1.txt
-        String fileName = "file1.txt";
-        try {
-            FileOutputStream stream = getContext().openFileOutput(fileName, 0);
-            stream.write(data.getBytes());
-            stream.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        String data = "Dato to save in file";
+//
+//        //Le ficher sera sauvegardé dans le dossier Android/data/<nom_complet_application>/files/file1.txt
+//        String fileName = "file1.txt";
+//        try {
+//            FileOutputStream stream = getContext().openFileOutput(fileName, 0);
+//            stream.write(data.getBytes());
+//            stream.close();
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         //Exemple de lecture à partir d'un fichier.
-        try {
+       /* try {
             FileInputStream inputStream = getContext().openFileInput(fileName);
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             StringBuilder sb = new StringBuilder();
@@ -93,6 +97,15 @@ public class SharedPreferenceSubmitFragment extends Fragment {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
+
+        //Exemple de création de fichier externe.
+        File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        File file1 = new File(folder, "file1.txt");
+
+        //comme ecriture de fichier interne.
+
     }
+
+
 }
