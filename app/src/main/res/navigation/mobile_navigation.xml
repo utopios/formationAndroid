@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/formToDoFragment">
+    app:startDestination="@id/sharedPreferenceSubmitFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -44,4 +44,18 @@
             android:name="priority"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/sharedPreferenceSubmitFragment"
+        android:name="formation.java.formationanroid.SharedPreferenceSubmitFragment"
+        android:label="fragment_shared_preference_submit"
+        tools:layout="@layout/fragment_shared_preference_submit" >
+        <action
+            android:id="@+id/action_sharedPreferenceSubmitFragment_to_sharedPreferenceReadFragment"
+            app:destination="@id/sharedPreferenceReadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sharedPreferenceReadFragment"
+        android:name="formation.java.formationanroid.SharedPreferenceReadFragment"
+        android:label="fragment_shared_preference_read"
+        tools:layout="@layout/fragment_shared_preference_read" />
 </navigation>

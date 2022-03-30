@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_list_to_do.xml" value="0.2296875" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.2296875" />
+        <entry key="app/src/main/res/layout/fragment_shared_preference_submit.xml" value="0.2" />
       </map>
     </option>
   </component>
