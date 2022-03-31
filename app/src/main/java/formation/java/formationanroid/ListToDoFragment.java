@@ -41,7 +41,7 @@ public class ListToDoFragment extends Fragment {
         //La création du todorepository
         _todoRepository = new ToDoRepository(getActivity().getApplication());
         if (getArguments() != null) {
-          args = ListToDoFragmentArgs.fromBundle(getArguments());
+         /* args = ListToDoFragmentArgs.fromBundle(getArguments());
           title = args.getTitle();
           priority = args.getPriority();
 
@@ -49,7 +49,7 @@ public class ListToDoFragment extends Fragment {
           ToDo toDo = new ToDo(title, priority);
 
           //L'ajout du todo dans notre base de données
-          _todoRepository.insert(toDo);
+          _todoRepository.insert(toDo);*/
         }
 
     }

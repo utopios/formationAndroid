@@ -9,6 +9,10 @@ import java.util.List;
 import formation.java.formationanroid.dao.ToDoDao;
 import formation.java.formationanroid.entity.ToDo;
 import formation.java.formationanroid.utils.ContextDataBase;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.Scheduler;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class ToDoRepository {
 
@@ -22,6 +26,10 @@ public class ToDoRepository {
         ContextDataBase.databaseExecutor.execute(() -> {
             _todoDao.insert(todo);
         });
+    }
+
+    public Completable insertRx(ToDo toDo) {
+        return Completable.fromAction(() -> { _todoDao.insert(toDo);}).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public LiveData<List<ToDo>> getAll() {

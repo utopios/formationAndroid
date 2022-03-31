@@ -16,10 +16,11 @@ import java.util.concurrent.Executors;
 
 import formation.java.formationanroid.dao.PersonDao;
 import formation.java.formationanroid.dao.ToDoDao;
+import formation.java.formationanroid.entity.Address;
 import formation.java.formationanroid.entity.Person;
 import formation.java.formationanroid.entity.ToDo;
 
-@Database(entities = {Person.class, ToDo.class}, version = 1)
+@Database(entities = {Person.class, ToDo.class, Address.class}, version = 2)
 public abstract class ContextDataBase extends RoomDatabase {
 
     public abstract PersonDao personDao();

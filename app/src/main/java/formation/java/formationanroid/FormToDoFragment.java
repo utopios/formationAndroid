@@ -13,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import formation.java.formationanroid.entity.ToDo;
+import formation.java.formationanroid.repository.ToDoRepository;
+
 public class FormToDoFragment extends Fragment {
 
     private EditText editTextTitleTask;
@@ -20,9 +23,14 @@ public class FormToDoFragment extends Fragment {
 
     private Button confirmButton;
     private FormToDoFragmentDirections.FormTodoToListTodo action;
+
+    private ToDoRepository _todoRepository;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        _todoRepository = new ToDoRepository(getActivity().getApplication());
     }
 
     @Override
@@ -42,8 +50,12 @@ public class FormToDoFragment extends Fragment {
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                action = FormToDoFragmentDirections.formTodoToListTodo(editTextTitleTask.getText().toString(), Integer.valueOf(editTextPriorityTask.getText().toString()));
-                Navigation.findNavController(v).navigate(action);
+                ToDo todo = new ToDo(editTextTitleTask.getText().toString(), Integer.valueOf(editTextPriorityTask.getText().toString()));
+
+                _todoRepository.insertRx(todo).subscribe(() -> {
+                    action = FormToDoFragmentDirections.formTodoToListTodo(editTextTitleTask.getText().toString(), Integer.valueOf(editTextPriorityTask.getText().toString()));
+                    Navigation.findNavController(v).navigate(action);
+                });
             }
         });
     }
