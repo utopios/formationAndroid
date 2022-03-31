@@ -29,6 +29,7 @@ public class ToDoRepository {
     }
 
     public Completable insertRx(ToDo toDo) {
+
         return Completable.fromAction(() -> { _todoDao.insert(toDo);}).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
