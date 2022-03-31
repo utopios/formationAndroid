@@ -5,3 +5,4 @@ Une vue pour afficher les tasks.
 
 En utlisant une base de données sqlite et room,
     On souhaite ajouter les fonctionnalités d'insertion des todos dans notre base
+    On souhaite également, afficher la liste des todos dans un recycleView
