@@ -6,11 +6,13 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 
 import java.util.List;
 
 import formation.java.formationanroid.entity.Person;
+import formation.java.formationanroid.entity.PersonWithAddress;
 
 @Dao
 public interface PersonDao {
@@ -38,6 +40,7 @@ public interface PersonDao {
     @Query("DELETE FROM person")
     void deleteAll();
 
+    @Transaction
     @Query("SELECT * FROM person")
-    LiveData<List<Person>> getAll();
+    LiveData<List<PersonWithAddress>> getAll();
 }

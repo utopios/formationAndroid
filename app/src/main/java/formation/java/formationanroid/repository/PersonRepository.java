@@ -8,6 +8,7 @@ import java.util.List;
 
 import formation.java.formationanroid.dao.PersonDao;
 import formation.java.formationanroid.entity.Person;
+import formation.java.formationanroid.entity.PersonWithAddress;
 import formation.java.formationanroid.utils.ContextDataBase;
 
 public class PersonRepository {
@@ -23,7 +24,7 @@ public class PersonRepository {
         });
     }
 
-    LiveData<List<Person>> getAll() {
+    LiveData<List<PersonWithAddress>> getAll() {
         return _personDao.getAll();
     }
 }
