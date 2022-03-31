@@ -2,3 +2,6 @@ Exercice 1
 -On souhaite créer une application des todos lists (avec deux vues).
 Une vue avec un formulaire pour ajouter une task (contenu, priorité)
 Une vue pour afficher les tasks.
+
+En utlisant une base de données sqlite et room,
+    On souhaite ajouter les fonctionnalités d'insertion des todos dans notre base
