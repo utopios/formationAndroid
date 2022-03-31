@@ -18,6 +18,11 @@ import java.util.List;
 import formation.java.formationanroid.adapter.TodoListAdapter;
 import formation.java.formationanroid.entity.ToDo;
 import formation.java.formationanroid.repository.ToDoRepository;
+import formation.java.formationanroid.service.ToDoService;
+import formation.java.formationanroid.utils.APIClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class ListToDoFragment extends Fragment {
@@ -28,6 +33,7 @@ public class ListToDoFragment extends Fragment {
     private TextView textViewResult;
     private ToDoRepository _todoRepository;
     private RecyclerView recyclerViewTodos;
+    private ToDoService _toDoService;
     public ListToDoFragment() {
         // Required empty public constructor
     }
@@ -52,6 +58,9 @@ public class ListToDoFragment extends Fragment {
           _todoRepository.insert(toDo);*/
         }
 
+        //Test l'appel à notre api
+        getDataFromApi();
+
     }
 
     @Override
@@ -73,6 +82,25 @@ public class ListToDoFragment extends Fragment {
 
         _todoRepository.getAll().observe(getActivity(), todos -> {
             adapter.submitList(todos);
+        });
+    }
+
+
+    private void getDataFromApi() {
+        _toDoService = APIClient.getClient().create(ToDoService.class);
+        _toDoService.getTodos().enqueue(new Callback<List<ToDo>>() {
+            @Override
+            public void onResponse(Call<List<ToDo>> call, Response<List<ToDo>> response) {
+                if(response.isSuccessful()) {
+                    //Le corps de la réponse est une liste de todos dans notre cas d'utilisation.
+                    List<ToDo> toDos = response.body();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ToDo>> call, Throwable t) {
+
+            }
         });
     }
 }
