@@ -31,8 +31,8 @@ public class SecondFragment extends Fragment {
             //personName = getArguments().getString("personName");
 
             //Récupération des données à l'aide de safeargs (safeargs genere une classe par fragment avec des paramètres, cette classe contient des getters pour les arguments)
-            SecondFragmentArgs args = SecondFragmentArgs.fromBundle(getArguments());
-            personName = args.getPersonName();
+           // SecondFragmentArgs args = SecondFragmentArgs.fromBundle(getArguments());
+            //personName = args.getPersonName();
         }
     }
 

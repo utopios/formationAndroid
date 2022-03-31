@@ -15,12 +15,15 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import formation.java.formationanroid.dao.PersonDao;
+import formation.java.formationanroid.dao.ToDoDao;
 import formation.java.formationanroid.entity.Person;
+import formation.java.formationanroid.entity.ToDo;
 
-@Database(entities = {Person.class}, version = 1)
+@Database(entities = {Person.class, ToDo.class}, version = 1)
 public abstract class ContextDataBase extends RoomDatabase {
 
     public abstract PersonDao personDao();
+    public abstract ToDoDao toDoDao();
     private static ContextDataBase instance = null;
 
     //On crée un pool de 3 threads pour executer nos actions dans des threads autre le principal

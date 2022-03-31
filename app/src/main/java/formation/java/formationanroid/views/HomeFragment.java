@@ -101,8 +101,8 @@ public class HomeFragment extends Fragment {
 
             //L'envoie des données avec le plugin safeargs
             //Le plugin safeargs genere une classe HomeFragmentDirections, une classe par action, et une méthode statique par action pour créer les actions
-            HomeFragmentDirections.HomeToSecond action = HomeFragmentDirections.homeToSecond(editTextName.getText().toString());
-            Navigation.findNavController(v).navigate(action);
+           // HomeFragmentDirections.HomeToSecond action = HomeFragmentDirections.homeToSecond(editTextName.getText().toString());
+            //Navigation.findNavController(v).navigate(action);
         });
         //On peut également utiliser les méthodes de création d'interfaces fonctionnelles de la classe Navigation
         //button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.homeToSecond));

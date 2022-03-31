@@ -11,6 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
+import formation.java.formationanroid.entity.ToDo;
+import formation.java.formationanroid.repository.ToDoRepository;
+
 
 public class ListToDoFragment extends Fragment {
 
@@ -18,6 +23,7 @@ public class ListToDoFragment extends Fragment {
     private int priority;
     private ListToDoFragmentArgs args;
     private TextView textViewResult;
+    private ToDoRepository _todoRepository;
     public ListToDoFragment() {
         // Required empty public constructor
     }
@@ -27,11 +33,23 @@ public class ListToDoFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //La création du todorepository
+        _todoRepository = new ToDoRepository(getActivity().getApplication());
         if (getArguments() != null) {
           args = ListToDoFragmentArgs.fromBundle(getArguments());
           title = args.getTitle();
           priority = args.getPriority();
+
+          //La création du todo
+          ToDo toDo = new ToDo(title, priority);
+
+          //L'ajout du todo dans notre base de données
+          _todoRepository.insert(toDo);
         }
+        _todoRepository.getAll().observe(this, todos -> {
+            List<ToDo> tmpTodos = todos;
+        });
     }
 
     @Override
