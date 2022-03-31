@@ -8,6 +8,7 @@ public class APIClient {
 
     private static Retrofit retrofit = null;
 
+    //Dans le cadre de test avec une api tourne sur une machine local(pensez à utiliser l'adrese ip de cette machine)
     private static  String baseUrl = "http://192.168.1.17:3000/";
 
     public static Retrofit getClient() {
