@@ -9,6 +9,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -28,6 +29,7 @@ public interface ToDoService {
     @GET("distancematrix/json")
     Call<Object> getDistance(@Query("destinations") String destinations, @Query("origins") String origins);
 
+    @Headers("content-type: enctype/multipart-formdata")
     @POST("todos")
     void create(@Body ToDo toDo);
 
