@@ -92,7 +92,15 @@ public class ListToDoFragment extends Fragment {
 
     private void getDataFromApi() {
         _toDoService = APIClient.getClient().create(ToDoService.class);
-        _toDoService.getTodos().enqueue(new Callback<List<ToDo>>() {
+
+        //<=> observable de rxJava
+        _toDoService.getTodosObservable().doOnError((t) -> {}).subscribe(toDos -> {
+            adapter.submitList(toDos);
+        });
+
+        // <=>
+        //Avec Call de retrofit
+        /*_toDoService.getTodos().enqueue(new Callback<List<ToDo>>() {
             @Override
             public void onResponse(Call<List<ToDo>> call, Response<List<ToDo>> response) {
                 if(response.isSuccessful()) {
@@ -106,6 +114,6 @@ public class ListToDoFragment extends Fragment {
             public void onFailure(Call<List<ToDo>> call, Throwable t) {
                 Log.e("Erreur connexion","error");
             }
-        });
+        });*/
     }
 }
