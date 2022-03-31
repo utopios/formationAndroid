@@ -3,6 +3,7 @@ package formation.java.formationanroid.utils;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.room.AutoMigration;
 import androidx.room.Database;
 import androidx.room.DatabaseConfiguration;
 import androidx.room.InvalidationTracker;
@@ -47,7 +48,7 @@ public abstract class ContextDataBase extends RoomDatabase {
                                 dao.insert(p);
                             });
                         }
-                    })
+                    }).fallbackToDestructiveMigration()
                     .build();
         }
         return instance;

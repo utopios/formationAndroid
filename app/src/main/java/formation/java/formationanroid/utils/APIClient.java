@@ -8,7 +8,7 @@ public class APIClient {
 
     private static Retrofit retrofit = null;
 
-    private static final String baseUrl = "http://localhost:3000";
+    private static  String baseUrl = "http://192.168.1.17:3000/";
 
     public static Retrofit getClient() {
         //La création d'un objet pour les connexions http (OkHttp)

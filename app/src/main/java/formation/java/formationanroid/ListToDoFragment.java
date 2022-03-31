@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class ListToDoFragment extends Fragment {
     private ToDoRepository _todoRepository;
     private RecyclerView recyclerViewTodos;
     private ToDoService _toDoService;
+    private TodoListAdapter adapter;
     public ListToDoFragment() {
         // Required empty public constructor
     }
@@ -58,8 +60,7 @@ public class ListToDoFragment extends Fragment {
           _todoRepository.insert(toDo);*/
         }
 
-        //Test l'appel à notre api
-        getDataFromApi();
+
 
     }
 
@@ -74,15 +75,18 @@ public class ListToDoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerViewTodos = view.findViewById(R.id.recyclerTodos);
-        final TodoListAdapter adapter = new TodoListAdapter(new TodoListAdapter.ToDoDiff());
+        adapter = new TodoListAdapter(new TodoListAdapter.ToDoDiff());
         recyclerViewTodos.setAdapter(adapter);
         recyclerViewTodos.setLayoutManager(new LinearLayoutManager(getContext()));
         /*textViewResult = view.findViewById(R.id.viewResult);
         textViewResult.setText(title + " " + priority);*/
 
-        _todoRepository.getAll().observe(getActivity(), todos -> {
+        /*_todoRepository.getAll().observe(getActivity(), todos -> {
             adapter.submitList(todos);
-        });
+        })*/
+
+        //Test l'appel à notre api
+        getDataFromApi();
     }
 
 
@@ -94,12 +98,13 @@ public class ListToDoFragment extends Fragment {
                 if(response.isSuccessful()) {
                     //Le corps de la réponse est une liste de todos dans notre cas d'utilisation.
                     List<ToDo> toDos = response.body();
+                    adapter.submitList(toDos);
                 }
             }
 
             @Override
             public void onFailure(Call<List<ToDo>> call, Throwable t) {
-
+                Log.e("Erreur connexion","error");
             }
         });
     }

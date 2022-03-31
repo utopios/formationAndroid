@@ -40,9 +40,7 @@ public class ToDo {
         this.priority = priority;
     }
 
-    public ToDo() {
 
-    }
 
     public ToDo(@NonNull String title, int priority) {
         this.title = title;
