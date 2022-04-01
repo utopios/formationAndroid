@@ -1,0 +1,3 @@
+-Réaliser une application avec deux vues comme indiquer dans l'image screen.
+-Pour récupérer les produits, on peut utiliser l'api https://fakestoreapi.com/
+-On peut également imaginer la savegarde des produits dans une base de données local à l'aide de ROOM
