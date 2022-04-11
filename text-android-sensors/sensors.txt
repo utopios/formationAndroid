@@ -34,3 +34,8 @@ Exemple d'utilisation des locations.
 
 Autre exemple d'utilisation avec le dépot git de google https://github.com/googlemaps/android-samples
 
+
+Sensor avec intent
+- En plus des vérification des permissions, on doit renvoyer vers l'intent du sensor.
+- gérer le retour de l'intent du sensor.
+
