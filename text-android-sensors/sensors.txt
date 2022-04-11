@@ -1,0 +1,24 @@
+1 -  Motion Sensors
+    - Capturer l'acceleration, la rotation  du téléphone ...
+2 -  Position Sensors
+    - Récupération de la position du téléphone.
+3 -  Environmental Sensors
+    - capteur pour mesurer la temperature
+
+
+Android nous permet d'utiliser des SDK (plusieurs classes et interfaces).
+
+Classes
+    1- SensorManager : => getSystemService(SENSOR_SERVICE)
+        - Récupérer l'instance du sensor
+        - écouter le sensor
+        - enregister des méthodes call Back sur le sensor.
+
+    2- Sensor
+        - Récupérer les informations sur le sensor(nom, type, ...).
+
+    ...
+
+Interfaces
+    SensorEventListener
+        - pour implémenter des méthodes de callback.

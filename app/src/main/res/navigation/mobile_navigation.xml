@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/formToDoFragment">
+    app:startDestination="@id/acceleratorFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -58,4 +58,9 @@
         android:name="formation.java.formationanroid.SharedPreferenceReadFragment"
         android:label="fragment_shared_preference_read"
         tools:layout="@layout/fragment_shared_preference_read" />
+    <fragment
+        android:id="@+id/acceleratorFragment"
+        android:name="formation.java.formationanroid.AcceleratorFragment"
+        android:label="fragment_accelerator"
+        tools:layout="@layout/fragment_accelerator" />
 </navigation>
