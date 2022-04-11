@@ -32,4 +32,5 @@ Exemple d'utilisation des locations.
      - un client pour accéder au location (FusedLocationProviderClient)
      - En plus on peut, à l'aide du package google play service, accéder au sensor pour vérfier si gps est actif.
 
+Autre exemple d'utilisation avec le dépot git de google https://github.com/googlemaps/android-samples
 
