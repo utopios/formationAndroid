@@ -1,9 +1,12 @@
 package formation.java.formationanroid;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -23,6 +26,12 @@ public class CameraFragment extends Fragment {
     ImageView resultImageView;
     int CODE_RESULT = 33;
 
+    ActivityResultLauncher launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), (result) -> {
+        if(result.getResultCode() == Activity.RESULT_OK) {
+            Bitmap image = (Bitmap) result.getData().getExtras().get("data");
+            resultImageView.setImageBitmap(image);
+        }
+    } );
 
     public CameraFragment() {
         // Required empty public constructor
@@ -50,15 +59,16 @@ public class CameraFragment extends Fragment {
         resultImageView = (ImageView) view.findViewById(R.id.resultImageView);
         takePictureButton.setOnClickListener((v) -> {
             Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(cameraIntent, CODE_RESULT);
+            //startActivityForResult(cameraIntent, CODE_RESULT);
+            launcher.launch(cameraIntent);
         });
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
-        if(requestCode == CODE_RESULT) {
-            Bitmap image = (Bitmap) intent.getExtras().get("data");
-            resultImageView.setImageBitmap(image);
-        }
-    }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
+//        if(requestCode == CODE_RESULT) {
+//            Bitmap image = (Bitmap) intent.getExtras().get("data");
+//            resultImageView.setImageBitmap(image);
+//        }
+//    }
 }
