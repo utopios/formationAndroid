@@ -22,3 +22,14 @@ Classes
 Interfaces
     SensorEventListener
         - pour implémenter des méthodes de callback.
+
+
+Exemple d'utilisation des locations.
+     - demande de permission dans le manifest android
+     - Utilisation du package google play services.
+     - Définition du request permissions
+     - définition d'une méthode checkPermissions
+     - un client pour accéder au location (FusedLocationProviderClient)
+     - En plus on peut, à l'aide du package google play service, accéder au sensor pour vérfier si gps est actif.
+
+
