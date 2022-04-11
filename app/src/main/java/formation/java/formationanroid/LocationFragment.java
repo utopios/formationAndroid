@@ -34,7 +34,7 @@ public class LocationFragment extends Fragment {
     int REQUEST_CODE = 44;
 
     ActivityResultLauncher requestPermissions =  registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), (permissions) -> {
-        if(permissions.get(Manifest.permission.ACCESS_FINE_LOCATION) == true) {
+        if(/*permissions.get(Manifest.permission.ACCESS_FINE_LOCATION) == true || */permissions.get(Manifest.permission.ACCESS_COARSE_LOCATION) == true) {
             getLocation();
         }
     });
@@ -60,7 +60,7 @@ public class LocationFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        requestPermissions.launch(new String[] {Manifest.permission.ACCESS_FINE_LOCATION});
+        requestPermissions.launch(new String[] {Manifest.permission.ACCESS_COARSE_LOCATION});
         locationTextView = (TextView) view.findViewById(R.id.resultLocationTextView);
         super.onViewCreated(view, savedInstanceState);
     }
@@ -77,7 +77,7 @@ public class LocationFragment extends Fragment {
 
     //Vérification des permissions
     private boolean checkPermissions() {
-        return ActivityCompat.checkSelfPermission(getActivity(),Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(),Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+        return ActivityCompat.checkSelfPermission(getActivity(),Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(getActivity(),Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
     }
 
     //Vérification de l'activation des sensors
